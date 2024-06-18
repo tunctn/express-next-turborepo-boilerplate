@@ -1,0 +1,9 @@
+{
+  "extends": "@kekik/tsconfig/node",
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src", "src/**/*"]
+}

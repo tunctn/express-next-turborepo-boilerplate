@@ -1,0 +1,42 @@
+:where(html[dir="ltr"]),
+:where([data-sonner-toaster][dir="ltr"]) {
+  --toast-close-button-start: unset;
+  --toast-close-button-end: 0;
+  --toast-close-button-transform: translate(-35%, -35%);
+}
+
+:where([data-sonner-toast]) :where([data-title]) {
+  font-weight: 400 !important;
+  line-height: 1.5;
+  color: inherit;
+}
+
+:where([data-sonner-toast]) :where([data-close-button]) {
+  position: absolute;
+  left: unset !important;
+  right: 0px !important;
+  top: 50% !important;
+  height: 40px !important;
+  width: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: transparent !important;
+  color: inherit;
+  border: transparent !important;
+  transform: translate(-10px, -50%) !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  z-index: 1;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(0, 0, 0, 0.14) !important;
+  }
+}

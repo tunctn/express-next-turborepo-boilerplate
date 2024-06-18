@@ -1,0 +1,37 @@
+{
+  "name": "repo",
+  "private": true,
+  "scripts": {
+    "purge:nm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + ",
+    "purge:turbo": "find . -name '.turbo' -type d -prune -exec rm -rf '{}' + ",
+    "purge:next": "find . -name '.next' -type d -prune -exec rm -rf '{}' + ",
+    "purge:dist": "find . -name 'dist' -type d -prune -exec rm -rf '{}' + ",
+    "purge:all": "pnpm run purge:nm && pnpm run purge:turbo && pnpm run purge:next && pnpm run purge:dist",
+    "reinstall": "pnpm run purge:all && pnpm install",
+    "kill-ports": "npx kill-port 3000 && npx kill-port 3001 && npx kill-port 3002 && npx kill-port 4000",
+    "build": "dotenv -- turbo run build",
+    "build:web": "dotenv -- turbo run build --filter='./apps/web'",
+    "build:server": "dotenv -- turbo run build --filter='./apps/server'",
+    "db:up": "dotenv -- pnpm run --filter=server db:up",
+    "db:push": "dotenv -- pnpm run --filter=server db:push",
+    "db:pull": "dotenv -- pnpm run --filter=server db:pull",
+    "db:generate": "dotenv -- pnpm run --filter=server db:generate",
+    "dev": "dotenv -- turbo run dev --concurrency 20",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate": "turbo run generate",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.2",
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.4",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@total-typescript/ts-reset": "^0.5.1"
+  }
+}
