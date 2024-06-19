@@ -20,7 +20,7 @@ This boilerplate includes following packages/apps:
 - `web`: a [Next.js](https://nextjs.org/) app
 - `server`: an [Express.js](https://expressjs.com/) app
 - `@packages/emails`: a React email component library to be used in the server app.
-- `@packages/eslint`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@packages/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
 - `@packages/shared`: Shared types and utilities between the server and web apps
 
