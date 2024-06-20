@@ -2,9 +2,9 @@ import { HttpException } from '@/exceptions/http.exception';
 import { AccessValidator } from './_access-validator';
 
 import { ERROR } from '@/lib/errors';
-import { UserRole } from '@packages/shared';
-import { RequestWithAuth } from '../auth.middleware';
-import { PlaylistAccessType, getPlaylistAccessValidatorKey, playlistAccessValidator } from './playlist.validator';
+import { type UserRole } from '@packages/shared';
+import { type RequestWithAuth } from '../auth.middleware';
+import { getPlaylistAccessValidatorKey, playlistAccessValidator, type PlaylistAccessType } from './playlist.validator';
 
 const accessValidator = AccessValidator.getInstance();
 

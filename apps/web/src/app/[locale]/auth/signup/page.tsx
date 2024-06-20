@@ -1,4 +1,4 @@
-import { Locale } from "@packages/shared";
+import type { Locale } from "@packages/shared";
 import { SignupForm } from "./signup-form";
 
 interface SignupPageProps {

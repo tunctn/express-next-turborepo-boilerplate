@@ -1,3 +1,5 @@
+import { HttpException } from '@/exceptions/http.exception';
+import { ERROR } from '@/lib/errors';
 import { createController } from '@/utils/controller';
 import { authService } from '@/v1/services/auth';
 import { SignUpWithPasswordSchema, type SignUpWithPasswordResponse } from '@packages/shared';
@@ -9,6 +11,7 @@ export const signUpWithPassword = createController()
   .build(async ({ req, res }) => {
     const payload = req.body;
     const { user } = await authService.signUpWithPassword({ payload });
+    if (!user) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
 
     const response: SignUpWithPasswordResponse = {
       id: user.id,

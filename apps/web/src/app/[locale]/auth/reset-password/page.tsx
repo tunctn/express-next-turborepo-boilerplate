@@ -1,4 +1,4 @@
-import { Locale } from "@packages/shared";
+import type { Locale } from "@packages/shared";
 import { ResetPasswordForm } from "./reset-password-form";
 
 interface ResetPasswordPageProps {

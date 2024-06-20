@@ -21,9 +21,9 @@ import { api } from "@/lib/api";
 import { translateTo } from "@/lib/locale";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Locale,
-  SignUpWithPasswordPayload,
   SignUpWithPasswordSchema,
+  type Locale,
+  type SignUpWithPasswordPayload,
 } from "@packages/shared";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";

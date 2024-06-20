@@ -1,4 +1,4 @@
-import { Locale } from "@packages/shared";
+import type { Locale } from "@packages/shared";
 import { ForgotPasswordForm } from "./forgot-password-form";
 
 interface ForgotPasswordPageProps {

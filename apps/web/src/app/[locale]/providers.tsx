@@ -1,11 +1,11 @@
 "use client";
-import { Locale } from "@packages/shared";
+import type { Locale } from "@packages/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ProvidersProps {
   children: ReactNode;

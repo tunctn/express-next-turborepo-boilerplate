@@ -3,13 +3,12 @@ import { userEmailVerifications, users } from '@/db';
 import { HttpException } from '@/exceptions/http.exception';
 import { db } from '@/lib/db';
 import { t } from '@/lib/dictionary';
-import { env } from '@/lib/env';
 import { ERROR } from '@/lib/errors';
-import { EMAIL_ADDRESS_NAME, NOREPLY_EMAIL, resend } from '@/lib/resend';
+import { resend } from '@/lib/resend';
 import { createController } from '@/utils/controller';
 import { newId } from '@/utils/id';
 import { VerifyEmailEmailTemplate } from '@packages/emails';
-import { SendVerifyEmailTokenResponse, SendVerifyEmailTokenSchema, VERIFY_EMAIL_VALIDITY_DURATION_IN_MINUTES } from '@packages/shared';
+import { APP, SendVerifyEmailTokenSchema, VERIFY_EMAIL_VALIDITY_DURATION_IN_MINUTES, type SendVerifyEmailTokenResponse } from '@packages/shared';
 import dayjs from 'dayjs';
 import { eq } from 'drizzle-orm';
 
@@ -41,6 +40,8 @@ export const sendVerifyEmailToken = createController()
 
     if (existingTokenRows.length > 0) {
       const existingToken = existingTokenRows[0];
+      if (!existingToken) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
+
       const now = new Date();
       const createdAt = new Date(existingToken.created_at);
       const diff = now.getTime() - createdAt.getTime();
@@ -65,17 +66,21 @@ export const sendVerifyEmailToken = createController()
         expires_at: expiresAtDatetime,
       })
       .returning();
-    const emailVerificationToken = emailVerificationTokenRows[0].token;
+    const emailVerificationTokenRow = emailVerificationTokenRows[0];
+    if (!emailVerificationTokenRow) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
 
-    const verifyEmail = IS_DEV ? env.TEST_EMAIL_ADDRESS : existingUser.email_address;
+    const emailVerificationToken = emailVerificationTokenRow.token;
+
+    const emailAddress = IS_DEV ? APP.EMAIL_ADDRESS.TEST : user.email_address;
+
     await resend.emails.send({
-      from: `${EMAIL_ADDRESS_NAME} <${NOREPLY_EMAIL}>`,
-      to: [verifyEmail],
+      from: `${APP.TITLE} <${APP.EMAIL_ADDRESS.NOREPLY}>`,
+      to: [emailAddress],
       subject: t({ en: 'Verify your account', tr: 'Hesabını doğrula', locale }),
       react: VerifyEmailEmailTemplate({
         firstName: existingUser.first_name,
         locale,
-        url: `${env.WEB_URL}/auth/verify-email?token=${emailVerificationToken}`,
+        url: `${APP.WEB_URL}/auth/verify-email?token=${emailVerificationToken}`,
         firstTime: true,
       }) as React.ReactElement,
     });

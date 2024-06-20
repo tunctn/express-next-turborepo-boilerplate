@@ -1,8 +1,9 @@
 import { userEmailVerifications, users } from '@/db';
 import { HttpException } from '@/exceptions/http.exception';
 import { db } from '@/lib/db';
+import { ERROR } from '@/lib/errors';
 import { createController } from '@/utils/controller';
-import { VerifyEmailResponse, VerifyEmailSchema } from '@packages/shared';
+import { VerifyEmailSchema, type VerifyEmailResponse } from '@packages/shared';
 import { eq } from 'drizzle-orm';
 
 export const verifyEmailWithToken = createController()
@@ -11,8 +12,6 @@ export const verifyEmailWithToken = createController()
   })
   .withAuth()
   .build(async ({ req, res }) => {
-    const user = req.user;
-    const locale = req.locale;
     const response: VerifyEmailResponse = true;
 
     const data = req.body;
@@ -26,6 +25,8 @@ export const verifyEmailWithToken = createController()
     }
 
     const verification = verificationRequest[0];
+    if (!verification) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
+
     if (verification.expires_at < new Date()) {
       const currentUserRows = await db.select().from(users).where(eq(users.id, verification.user_id)).limit(1);
       const currentUser = currentUserRows[0];

@@ -36,7 +36,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(request.nextUrl);
   }
 
-  const locale = pathname.split("/")[1];
+  const locale = pathname.split("/")[1] ?? DEFAULT_LOCALE;
   response.cookies.set(CookieName.ApiLocale, locale);
 
   return response;

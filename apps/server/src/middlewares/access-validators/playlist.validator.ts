@@ -12,7 +12,7 @@ export const getPlaylistAccessValidatorKey = ({ playlistId, userId, type }: Play
   return createPermissionKey(userId)(`playlist[${playlistId}]::type[${type}]`);
 };
 
-export const playlistAccessValidator = async ({ playlistId, userId, type }: PlaylistAccessValidatorProps) => {
+export const playlistAccessValidator = async ({}: PlaylistAccessValidatorProps) => {
   // const brand = await db.query.brands.findFirst({
   //   columns: { id: true },
   //   where: (b, { eq }) => eq(b.id, brandId),

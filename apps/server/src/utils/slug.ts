@@ -1,4 +1,4 @@
-import { ERROR, ErrorMessage } from '@/lib/errors';
+import { ERROR, type ErrorMessage } from '@/lib/errors';
 import { MAX_USERNAME_LENGTH, MIN_USERNAME_LENGTH, RESERVED_WORDS } from '@packages/shared';
 
 const ENGLISH_ALPHABET = 'abcdefghijklmnopqrstuvwxyz' as const;

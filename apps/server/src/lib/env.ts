@@ -11,21 +11,17 @@ import { z } from 'zod';
 
 export const env = createEnv({
   server: {
-    NODE_ENV: z.enum(['development', 'test', 'production']),
-    PORT: z.string(),
+    NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
+    PORT: z.string().default('4000'),
 
     DATABASE_URL: z.string(),
+    DATABASE_SSL: z.enum(['true', 'false']),
     JWT_SECRET_KEY: z.string(),
 
     REDIS_URL: z.string(),
     REDIS_TOKEN: z.string(),
 
     RESEND_API_KEY: z.string(),
-    EMAIL_ADDRESS_DOMAIN: z.string(),
-    TEST_EMAIL_ADDRESS: z.string(),
-
-    WEB_URL: z.string(),
-    API_URL: z.string(),
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,

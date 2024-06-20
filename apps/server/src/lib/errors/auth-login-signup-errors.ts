@@ -1,4 +1,4 @@
-import { MessageGroup } from './types';
+import type { MessageGroup } from './types';
 
 export const AUTH_LOGIN_SIGNUP_ERROR = {
   'signup.email-already-registered-with-another-signup-method': {

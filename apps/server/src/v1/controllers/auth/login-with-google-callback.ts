@@ -87,6 +87,8 @@ export const loginWithGoogleCallback = createController()
       //       const session = await lucia.createSession(user.id, {});
       //       await authService.luciaSessionHandler({ session, req, res });
       //       return res.status(302).setHeader('Location', '/').end();
+
+      return res.status(500).json({ message: 'Unimplemented' });
     } catch (e) {
       if (e instanceof HttpException) {
         return res.status(e.status).send(e.message);

@@ -4,12 +4,12 @@ const inter = Inter({ subsets: ["latin"] });
 import "@/styles/globals.scss";
 
 import { cn } from "@/lib/utils";
-import { APP_TITLE, Locale } from "@packages/shared";
+import { APP, type Locale } from "@packages/shared";
 import { Toaster } from "sonner";
 import { Providers } from "./providers";
 
 export const metadata = {
-  title: APP_TITLE,
+  title: APP.TITLE,
   description: "",
 };
 

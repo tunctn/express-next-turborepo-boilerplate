@@ -1,4 +1,4 @@
-import { MessageGroup } from './types';
+import type { MessageGroup } from './types';
 
 export const ACCESS_CONTROL_ERROR = {
   'requires-auth-middleware': {

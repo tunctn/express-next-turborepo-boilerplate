@@ -1,5 +1,5 @@
-import { UserSession } from '@/db';
-import { LuciaAuthUser } from '@/lib/auth';
+import { type UserSession } from '@/db';
+import { type LuciaAuthUser } from '@/lib/auth';
 import { env } from '@/lib/env';
 import { SignJWT, jwtVerify } from 'jose';
 import util from 'util';

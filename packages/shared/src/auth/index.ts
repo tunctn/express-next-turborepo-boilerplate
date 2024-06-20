@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { UserRole } from '../users';
+import { type UserRole } from '../users';
 
 export const SIGN_UP_METHODS = ['password', 'google', 'facebook'] as const;
 export type SignUpMethod = (typeof SIGN_UP_METHODS)[number];

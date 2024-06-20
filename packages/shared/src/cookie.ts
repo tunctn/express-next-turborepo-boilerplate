@@ -1,7 +1,6 @@
-import { APP_NAME } from './constants';
-
+const COOKIE_PREFIX = 'my-app';
 export enum CookieName {
-  AuthSession = `${APP_NAME}_auth-session`,
-  ApiLocale = `${APP_NAME}_locale`,
-  GoogleOAuthState = `${APP_NAME}_google-oauth-state`,
+  AuthSession = `${COOKIE_PREFIX}_auth-session`,
+  ApiLocale = `${COOKIE_PREFIX}_locale`,
+  GoogleOAuthState = `${COOKIE_PREFIX}_google-oauth-state`,
 }

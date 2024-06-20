@@ -1,11 +1,12 @@
 import { userKeys, userPasswordResetRequests, users } from '@/db';
 import { HttpException } from '@/exceptions/http.exception';
 import { db } from '@/lib/db';
+import { ERROR } from '@/lib/errors';
 import { createController } from '@/utils/controller';
 import { transaction } from '@/utils/db';
 import { authService } from '@/v1/services/auth';
 import { createHashedPassword } from '@/v1/services/auth/sign-up-with-password';
-import { ResetPasswordResponse, ResetPasswordSchema } from '@packages/shared';
+import { ResetPasswordSchema, type ResetPasswordResponse } from '@packages/shared';
 import { eq } from 'drizzle-orm';
 
 export const resetPassword = createController()
@@ -58,6 +59,7 @@ export const resetPassword = createController()
 
       const updatedUser = await tx.select().from(users).where(eq(users.id, resetPasswordRequest.user_id)).limit(1);
       const user = updatedUser[0];
+      if (!user) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
 
       return user;
     });

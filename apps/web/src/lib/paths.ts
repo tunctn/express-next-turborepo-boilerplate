@@ -1,4 +1,4 @@
-import { Locale } from "@packages/shared";
+import type { Locale } from "@packages/shared";
 
 export const getLocaleFromPath = (path: string): Locale | undefined => {
   const locale = path.split("/")?.[1];

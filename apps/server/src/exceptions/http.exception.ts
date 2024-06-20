@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@/lib/errors';
+import type { ErrorMessage } from '@/lib/errors';
 
 export class HttpException extends Error {
   public status: number;

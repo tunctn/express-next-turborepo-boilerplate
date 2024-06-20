@@ -3,9 +3,9 @@ import { userSessions, users } from '@/db';
 import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
 
 import { IS_PROD } from '@/config';
-import { CookieName, UserRole } from '@packages/shared';
+import { CookieName, type UserRole } from '@packages/shared';
 import { Lucia, TimeSpan } from 'lucia';
-import { db } from './db';
+import { db } from './db/db';
 
 const adapter = new DrizzlePostgreSQLAdapter(db, userSessions, users);
 

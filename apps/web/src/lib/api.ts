@@ -1,12 +1,11 @@
-import { CookieName } from "@packages/shared";
-import { env } from "./env";
+import { APP, CookieName } from "@packages/shared";
 
 type RequestInitWithAuth = Omit<RequestInit, "body"> & {
   authCookie?: string;
   body?: any;
 };
 
-// eslint-disable-next-line turbo/no-undeclared-env-vars
+// eslint-disable-next-line no-unused-vars
 type Request = <T>(path: string, options?: RequestInitWithAuth) => Promise<T>;
 
 type RequestMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -15,7 +14,7 @@ export class Api {
   private baseUrl = "";
 
   constructor() {
-    this.baseUrl = env.NEXT_PUBLIC_API_URL;
+    this.baseUrl = `${APP.API_URL}/${APP.API_VERSION}`;
   }
 
   private handleRequest = async <T>({
@@ -55,7 +54,10 @@ export class Api {
     });
   };
 
-  public get: Request = async <T>(path: string, options?: RequestInit) => {
+  public get: Request = async <T>(
+    path: string,
+    options?: RequestInitWithAuth,
+  ) => {
     return await this.handleRequest<T>({
       method: "GET",
       path,
@@ -63,7 +65,10 @@ export class Api {
     });
   };
 
-  public post: Request = async <T>(path: string, options?: RequestInit) => {
+  public post: Request = async <T>(
+    path: string,
+    options?: RequestInitWithAuth,
+  ) => {
     return await this.handleRequest<T>({
       method: "POST",
       path,
@@ -71,7 +76,10 @@ export class Api {
     });
   };
 
-  public put: Request = async <T>(path: string, options?: RequestInit) => {
+  public put: Request = async <T>(
+    path: string,
+    options?: RequestInitWithAuth,
+  ) => {
     return await this.handleRequest<T>({
       method: "PUT",
       path,
@@ -79,7 +87,10 @@ export class Api {
     });
   };
 
-  public delete: Request = async <T>(path: string, options?: RequestInit) => {
+  public delete: Request = async <T>(
+    path: string,
+    options?: RequestInitWithAuth,
+  ) => {
     return await this.handleRequest<T>({
       method: "DELETE",
       path,
@@ -87,7 +98,10 @@ export class Api {
     });
   };
 
-  public patch: Request = async <T>(path: string, options?: RequestInit) => {
+  public patch: Request = async <T>(
+    path: string,
+    options?: RequestInitWithAuth,
+  ) => {
     return await this.handleRequest<T>({
       method: "PATCH",
       path,

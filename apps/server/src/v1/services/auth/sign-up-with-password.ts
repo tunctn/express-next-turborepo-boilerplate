@@ -1,12 +1,12 @@
-import { InsertUser, userKeys, userSignupMethods, users } from '@/db';
+import { userKeys, userSignupMethods, users, type InsertUser } from '@/db';
 import { HttpException } from '@/exceptions/http.exception';
 import type { BaseService } from '@/interfaces/services.interface';
 import { db } from '@/lib/db';
-import { ERROR, ErrorMessage } from '@/lib/errors';
+import { ERROR } from '@/lib/errors';
 import { newId } from '@/utils/id';
 import { testUsername } from '@/utils/slug';
 import { hash } from '@node-rs/argon2';
-import { SignUpMethod, type SignUpWithPasswordPayload } from '@packages/shared';
+import type { SignUpMethod, SignUpWithPasswordPayload } from '@packages/shared';
 import { eq } from 'drizzle-orm';
 
 interface SignUpWithPasswordService extends BaseService {
@@ -33,10 +33,9 @@ export const signUpWithPassword = async ({ tx = db, payload }: SignUpWithPasswor
   }
 
   // Test slug for username before creating user
-  let error: undefined | ErrorMessage = undefined;
   const result = testUsername(username);
   if (result !== true) {
-    error = result;
+    throw new HttpException(400, result);
   }
 
   const passwordHash = await createHashedPassword(password);
@@ -64,6 +63,7 @@ export const signUpWithPassword = async ({ tx = db, payload }: SignUpWithPasswor
 
   const insertedUserRows = await db.insert(users).values(userPayload).returning();
   const user = insertedUserRows[0];
+  if (!user) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
 
   const method: SignUpMethod = 'password';
   await db.insert(userSignupMethods).values({

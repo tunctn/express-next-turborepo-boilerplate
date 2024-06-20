@@ -1,21 +1,18 @@
-import { APP_NAME } from './constants';
+import { APP } from './constants';
 
 export const RESERVED_WORDS = [
-  `${APP_NAME}`,
-  `${APP_NAME}.com`,
-  `${APP_NAME}com`,
-  `${APP_NAME}.co`,
-  `${APP_NAME}co`,
-  `${APP_NAME}.io`,
-  `${APP_NAME}io`,
-  `${APP_NAME}.net`,
-  `${APP_NAME}net`,
-  `${APP_NAME}.org`,
-  `${APP_NAME}org`,
-  `${APP_NAME}-admin`,
-  `${APP_NAME}admin`,
-  `${APP_NAME}-admins`,
-  `${APP_NAME}admins`,
+  APP.WEB_URL,
+  APP.API_URL,
+  APP.WEB_URL.replace('http://', ''),
+  APP.API_URL.replace('http://', ''),
+  APP.WEB_URL.replace('https://', ''),
+  APP.API_URL.replace('https://', ''),
+
+  APP.COM,
+  `${APP.COM}-admin`,
+  `${APP.COM}admin`,
+  `${APP.COM}-admins`,
+  `${APP.COM}admins`,
 
   'new',
   'edit',

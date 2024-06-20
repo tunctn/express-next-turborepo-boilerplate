@@ -1,6 +1,6 @@
 import { createController } from '@/utils/controller';
 
-export const loginWithGoogle = createController().build(async ({ req, res }) => {
+export const loginWithGoogle = createController().build(async ({ res }) => {
   // const [url, state] = await googleAuth.getAuthorizationUrl();
   // res.cookie(GOOGLE_AUTH_COOKIE_NAME, state, {
   //   httpOnly: true,

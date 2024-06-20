@@ -1,4 +1,4 @@
-import { APP_TITLE, Locale } from '@packages/shared';
+import { APP, type Locale } from '@packages/shared';
 import * as React from 'react';
 import { translateToNode } from '../utils/dictionary';
 
@@ -9,7 +9,7 @@ interface VerifyEmailEmailTemplateProps {
   locale: Locale;
 }
 
-export const VerifyEmailEmailTemplate: React.FC<Readonly<VerifyEmailEmailTemplateProps>> = ({ firstName, firstTime, url, locale }) => {
+export const VerifyEmailEmailTemplate: React.FC<Readonly<VerifyEmailEmailTemplateProps>> = ({ firstName, url, locale }) => {
   const t = translateToNode(locale);
 
   return (
@@ -42,7 +42,7 @@ export const VerifyEmailEmailTemplate: React.FC<Readonly<VerifyEmailEmailTemplat
           tr: 'Teşekkürler,',
         })}
         <br />
-        {APP_TITLE}
+        {APP.TITLE}
       </p>
     </div>
   );

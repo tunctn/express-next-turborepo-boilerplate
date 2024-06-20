@@ -20,8 +20,10 @@ export class AccessValidator {
     const cacheSize = Object.keys(this.localCache).length;
     if (cacheSize > 5000) {
       const sortedCache = Object.entries(this.localCache).sort((a, b) => a[1].addedAt - b[1].addedAt);
-      const [key, _] = sortedCache[0];
-      delete this.localCache[key];
+      const key = sortedCache?.[0]?.[0];
+      if (key) {
+        delete this.localCache[key];
+      }
     }
 
     // Add to cache
@@ -31,8 +33,9 @@ export class AccessValidator {
     delete this.localCache[key];
   };
   private getFromLocalCache = (key: string): boolean | undefined => {
-    if (this.localCache?.[key]) {
-      return this.localCache[key].value;
+    const localCache = this.localCache?.[key];
+    if (localCache) {
+      return localCache.value;
     }
 
     return undefined;

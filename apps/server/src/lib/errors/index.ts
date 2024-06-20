@@ -4,7 +4,7 @@ import { AUTH_LOGIN_SIGNUP_ERROR } from './auth-login-signup-errors';
 import { GENERIC_ERROR } from './generic-errors';
 import { USERNAME_ERROR } from './username-errors';
 
-export { ErrorMessage } from './types';
+export { type ErrorMessage } from './types';
 
 export const ERROR = {
   GENERIC: GENERIC_ERROR,

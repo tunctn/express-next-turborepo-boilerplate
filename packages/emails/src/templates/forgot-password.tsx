@@ -1,4 +1,4 @@
-import { APP_TITLE, FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, Locale } from '@packages/shared';
+import { APP, FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, type Locale } from '@packages/shared';
 import * as React from 'react';
 import { translateToNode } from '../utils/dictionary';
 
@@ -20,8 +20,8 @@ export const ForgotPasswordEmailTemplate: React.FC<Readonly<ForgotPasswordEmailT
       </h1>
       <p>
         {t({
-          en: `You recently requested to reset your password for your ${APP_TITLE} account.`,
-          tr: `${APP_TITLE} hesabınızın şifresini sıfırlamak için bir talepte bulundunuz.`,
+          en: `You recently requested to reset your password for your ${APP.TITLE} account.`,
+          tr: `${APP.TITLE} hesabınızın şifresini sıfırlamak için bir talepte bulundunuz.`,
         })}
       </p>
       <p>
@@ -52,7 +52,7 @@ export const ForgotPasswordEmailTemplate: React.FC<Readonly<ForgotPasswordEmailT
           tr: 'Teşekkürler,',
         })}
         <br />
-        {APP_TITLE}
+        {APP.TITLE}
       </p>
     </div>
   );

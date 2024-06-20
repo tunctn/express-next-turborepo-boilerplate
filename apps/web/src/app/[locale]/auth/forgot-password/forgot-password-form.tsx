@@ -21,10 +21,10 @@ import { api } from "@/lib/api";
 import { translateTo } from "@/lib/locale";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  ForgotPasswordPayload,
-  ForgotPasswordResponse,
   ForgotPasswordSchema,
-  Locale,
+  type ForgotPasswordPayload,
+  type ForgotPasswordResponse,
+  type Locale,
 } from "@packages/shared";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";

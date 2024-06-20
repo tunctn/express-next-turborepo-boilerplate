@@ -1,5 +1,5 @@
 import { SIGN_UP_METHODS, USER_ROLES } from '@packages/shared';
-import { InferInsertModel, InferSelectModel, relations } from 'drizzle-orm';
+import { relations, type InferInsertModel, type InferSelectModel } from 'drizzle-orm';
 import { boolean, pgEnum, pgTable, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import { userEmailVerifications } from './email-verifications';
 import { userPasswordResetRequests } from './password-reset-requests';

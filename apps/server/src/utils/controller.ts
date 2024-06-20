@@ -1,12 +1,12 @@
 import { HttpException } from '@/exceptions/http.exception';
-import { LuciaAuthUser } from '@/lib/auth';
+import { type LuciaAuthUser } from '@/lib/auth';
 import { ERROR } from '@/lib/errors';
 import { createErrorBody } from '@/lib/errors/_create-error-body';
 import { redis } from '@/lib/redis';
-import { AccessControlMiddlewareOptions, accessControlMiddleware } from '@/middlewares/access-validators';
-import { RequestWithLooseAuth, authMiddleware, type RequestWithAuth } from '@/middlewares/auth.middleware';
+import { accessControlMiddleware, type AccessControlMiddlewareOptions } from '@/middlewares/access-validators';
+import { authMiddleware, type RequestWithAuth, type RequestWithLooseAuth } from '@/middlewares/auth.middleware';
 import { validationMiddleware, type RequestValidation } from '@/middlewares/validation.middleware';
-import { CookieName, DEFAULT_LOCALE, Locale, UserRole } from '@packages/shared';
+import { CookieName, DEFAULT_LOCALE, type Locale, type UserRole } from '@packages/shared';
 import dayjs from 'dayjs';
 import { type NextFunction, type Request, type Response } from 'express';
 import requestIp from 'request-ip';
@@ -298,7 +298,7 @@ export class Controller<ExcludedMethods extends string = never, ReqType = BaseRe
       } catch (err: any) {
         const { logMessage, status, body } = createErrorBody(err, req);
         logger.error(`[${req.method}] ${req.path} >> Controller :: StatusCode:: ${status}, Message:: ${logMessage}, `);
-        res.status(status).json(body);
+        return res.status(status).json(body);
       }
     };
   }

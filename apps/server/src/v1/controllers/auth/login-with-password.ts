@@ -1,10 +1,10 @@
 import { createController } from '@/utils/controller';
 import { authService } from '@/v1/services/auth';
 import {
-  LoginWithEmailPasswordResponse,
   LoginWithEmailPasswordSchema,
-  LoginWithUsernamePasswordResponse,
   LoginWithUsernamePasswordSchema,
+  type LoginWithEmailPasswordResponse,
+  type LoginWithUsernamePasswordResponse,
 } from '@packages/shared';
 
 export const loginWithEmailPassword = createController()

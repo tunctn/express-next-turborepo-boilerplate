@@ -1,5 +1,5 @@
 import { HttpException } from '@/exceptions/http.exception';
-import { LuciaAuthUser, lucia } from '@/lib/auth';
+import { lucia, type LuciaAuthUser } from '@/lib/auth';
 import { ERROR } from '@/lib/errors';
 import type { Request, Response } from 'express';
 

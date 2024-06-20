@@ -1,5 +1,5 @@
 import { MIN_USERNAME_LENGTH } from '@packages/shared';
-import { MessageGroup } from './types';
+import type { MessageGroup } from './types';
 
 export const USERNAME_ERROR = {
   'cannot-start-with-number': {

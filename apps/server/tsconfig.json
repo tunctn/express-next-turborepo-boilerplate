@@ -1,14 +1,13 @@
 {
   "extends": "@packages/tsconfig/node.json",
   "compilerOptions": {
-    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
     "jsx": "preserve",
-    "typeRoots": ["./src/types", "./node_modules/@types"] /* Specify multiple folders that act like './node_modules/@types'. */,
-    "sourceMap": true /* Create source map files for emitted JavaScript files. */,
-    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true
   }
 }

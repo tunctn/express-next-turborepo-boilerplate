@@ -2,12 +2,12 @@
 // https://github.com/aiji42/zod-i18n/blob/main/packages/core/locales/en/zod.json
 
 import { z } from 'zod';
-import { Locale } from './constants';
+import { type Locale } from './constants';
 
 type CustomZodErrorMap = (
   issue: z.ZodIssueOptionalMessage,
   _ctx: z.ErrorMapCtx,
-  locale: Locale
+  locale: Locale,
 ) => {
   message: string;
 };

@@ -4,7 +4,7 @@ import { env } from './src/lib/env';
 const config: Config = {
   dbCredentials: {
     url: env.DATABASE_URL,
-    ssl: false,
+    ssl: env.DATABASE_SSL === 'true',
   },
   schema: './src/db/index.ts',
   out: './drizzle',

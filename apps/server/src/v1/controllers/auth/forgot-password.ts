@@ -3,13 +3,13 @@ import { userPasswordResetRequests, users } from '@/db';
 import { HttpException } from '@/exceptions/http.exception';
 import { db } from '@/lib/db';
 import { t } from '@/lib/dictionary';
-import { env } from '@/lib/env';
-import { EMAIL_ADDRESS_NAME, NOREPLY_EMAIL, resend } from '@/lib/resend';
+import { ERROR } from '@/lib/errors';
+import { resend } from '@/lib/resend';
 import { createResetPasswordToken } from '@/utils/auth';
 import { sleep } from '@/utils/common';
 import { createController } from '@/utils/controller';
 import { ForgotPasswordEmailTemplate } from '@packages/emails';
-import { FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, ForgotPasswordResponse, ForgotPasswordSchema } from '@packages/shared';
+import { APP, FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, ForgotPasswordSchema, type ForgotPasswordResponse } from '@packages/shared';
 import dayjs from 'dayjs';
 import { desc, eq } from 'drizzle-orm';
 
@@ -42,6 +42,8 @@ export const forgotPassword = createController()
 
     if (existingRequests.length > 0) {
       const latestResetPasswordRequest = existingRequests[0];
+      if (!latestResetPasswordRequest) throw new HttpException(500, ERROR.GENERIC['unknown-error']);
+
       const now = dayjs();
       const tokenSentAt = dayjs(latestResetPasswordRequest.created_at);
       const diff = now.diff(tokenSentAt, 'minutes');
@@ -75,15 +77,16 @@ export const forgotPassword = createController()
       expires_at: expiresAtDatetime,
     });
 
-    const emailAddress = IS_DEV ? env.TEST_EMAIL_ADDRESS : user.email_address;
+    const emailAddress = IS_DEV ? APP.EMAIL_ADDRESS.TEST : user.email_address;
+
     await resend.emails.send({
-      from: `${EMAIL_ADDRESS_NAME} <${NOREPLY_EMAIL}>`,
+      from: `${APP.TITLE} <${APP.EMAIL_ADDRESS.NOREPLY}>`,
       to: [emailAddress],
       subject: t({ en: 'Reset your password', tr: 'Şifreni sıfırla', locale }),
       react: ForgotPasswordEmailTemplate({
         firstName: user.first_name,
         locale,
-        url: `${env.WEB_URL}/auth/reset-password?token=${token}`,
+        url: `${APP.WEB_URL}/auth/reset-password?token=${token}`,
       }) as React.ReactElement,
     });
 

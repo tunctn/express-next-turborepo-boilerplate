@@ -37,7 +37,7 @@ app.use(csrfMiddleware);
 app.use(ErrorMiddleware);
 
 // Health check
-app.use('/health', (req, res) => res.status(200).send('OK'));
+app.use('/health', (_, res) => res.status(200).send('OK'));
 
 // Routes
 v1Routes.forEach(({ router, path }) => app.use(`/v1${path}`, router));

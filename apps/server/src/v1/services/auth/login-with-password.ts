@@ -37,7 +37,7 @@ export const loginWithPassword = async ({ tx = db, payload }: LoginWithPasswordS
 
   const userKeyRows = await tx.select().from(userKeys).where(eq(userKeys.user_id, user.id)).limit(1);
   const userKey = userKeyRows[0];
-  if (!user) throw new HttpException(400, ERROR.AUTH_LOGIN_SIGNUP['user-not-found']);
+  if (!userKey) throw new HttpException(400, ERROR.AUTH_LOGIN_SIGNUP['user-not-found']);
 
   const validPassword = await verify(userKey.hashed_password, password, {
     memoryCost: 19456,

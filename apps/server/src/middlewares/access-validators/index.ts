@@ -1,1 +1,1 @@
-export { AccessControlMiddlewareOptions, accessControlMiddleware } from './_middleware';
+export { accessControlMiddleware, type AccessControlMiddlewareOptions } from './_middleware';
