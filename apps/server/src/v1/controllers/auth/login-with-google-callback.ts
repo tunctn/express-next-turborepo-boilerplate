@@ -1,6 +1,6 @@
 import { HttpException } from '@/exceptions/http.exception';
 import { createController } from '@/utils/controller';
-import { CookieName } from '@packages/shared';
+import { COOKIE_NAME } from '@packages/shared';
 import { parseCookies } from 'oslo/cookie';
 import { z } from 'zod';
 
@@ -13,7 +13,7 @@ export const loginWithGoogleCallback = createController()
   })
   .build(async ({ req, res }) => {
     const cookies = parseCookies(req.headers.cookie ?? '');
-    const storedState = cookies.get(CookieName.GoogleOAuthState) ?? '';
+    const storedState = cookies.get(COOKIE_NAME.GOOGLE_OAUTH_STATE) ?? '';
     const state = req.query.state;
     const code = req.query.code;
 

@@ -3,7 +3,7 @@ import { userSessions, users } from '@/db';
 import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
 
 import { IS_PROD } from '@/config';
-import { CookieName, type UserRole } from '@packages/shared';
+import { COOKIE_NAME, type UserRole } from '@packages/shared';
 import { Lucia, TimeSpan } from 'lucia';
 import { db } from './db/db';
 
@@ -12,7 +12,7 @@ const adapter = new DrizzlePostgreSQLAdapter(db, userSessions, users);
 export const lucia = new Lucia(adapter, {
   sessionExpiresIn: new TimeSpan(30, 'd'),
   sessionCookie: {
-    name: CookieName.AuthSession,
+    name: COOKIE_NAME.AUTH_SESSION,
     attributes: {
       secure: IS_PROD,
     },

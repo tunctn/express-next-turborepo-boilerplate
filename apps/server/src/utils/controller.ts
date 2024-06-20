@@ -6,7 +6,7 @@ import { redis } from '@/lib/redis';
 import { accessControlMiddleware, type AccessControlMiddlewareOptions } from '@/middlewares/access-validators';
 import { authMiddleware, type RequestWithAuth, type RequestWithLooseAuth } from '@/middlewares/auth.middleware';
 import { validationMiddleware, type RequestValidation } from '@/middlewares/validation.middleware';
-import { CookieName, DEFAULT_LOCALE, type Locale, type UserRole } from '@packages/shared';
+import { COOKIE_NAME, DEFAULT_LOCALE, type Locale, type UserRole } from '@packages/shared';
 import dayjs from 'dayjs';
 import { type NextFunction, type Request, type Response } from 'express';
 import requestIp from 'request-ip';
@@ -159,7 +159,7 @@ export class Controller<ExcludedMethods extends string = never, ReqType = BaseRe
         const clientIp = requestIp.getClientIp(req);
         (req as BaseRequest).client_ip = clientIp;
 
-        const localeCookie = req.cookies[CookieName.ApiLocale];
+        const localeCookie = req.cookies[COOKIE_NAME.API_LOCALE];
         (req as BaseRequest).locale = localeCookie ?? DEFAULT_LOCALE;
 
         if (this.options.devOnly && process.env['NODE_ENV'] !== 'development') {

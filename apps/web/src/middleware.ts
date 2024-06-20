@@ -1,10 +1,10 @@
 import { match } from "@formatjs/intl-localematcher";
-import { CookieName, DEFAULT_LOCALE, LOCALES } from "@packages/shared";
+import { COOKIE_NAME, DEFAULT_LOCALE, LOCALES } from "@packages/shared";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
 
 function getLocaleFromRequest(req: NextRequest) {
-  const cookie = req.cookies.get(CookieName.ApiLocale);
+  const cookie = req.cookies.get(COOKIE_NAME.API_LOCALE);
   if (cookie) {
     return cookie.value;
   }
@@ -37,7 +37,7 @@ export function middleware(request: NextRequest) {
   }
 
   const locale = pathname.split("/")[1] ?? DEFAULT_LOCALE;
-  response.cookies.set(CookieName.ApiLocale, locale);
+  response.cookies.set(COOKIE_NAME.API_LOCALE, locale);
 
   return response;
 }

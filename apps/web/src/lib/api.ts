@@ -1,4 +1,4 @@
-import { APP, CookieName } from "@packages/shared";
+import { APP, COOKIE_NAME } from "@packages/shared";
 
 type RequestInitWithAuth = Omit<RequestInit, "body"> & {
   authCookie?: string;
@@ -37,7 +37,7 @@ export class Api {
       headers: {
         "Content-Type": "application/json",
         ...(authCookie && {
-          Cookie: `${CookieName.AuthSession}=${authCookie}`,
+          Cookie: `${COOKIE_NAME.AUTH_SESSION}=${authCookie}`,
         }),
         ...requestInit?.headers,
       },
