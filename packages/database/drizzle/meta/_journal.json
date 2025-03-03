@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1740949704228,
+      "tag": "0000_classy_champions",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1740956433716,
+      "tag": "0001_futuristic_lyja",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1740960899110,
+      "tag": "0002_sparkling_loa",
+      "breakpoints": true
+    }
+  ]
+}

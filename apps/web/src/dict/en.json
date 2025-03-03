@@ -1,0 +1,72 @@
+{
+  "home_page": {
+    "title": "Hello world!"
+  },
+  "auth": {
+    "login_button": "Login",
+    "signup_button": "Sign Up",
+    "social_login": {
+      "google": "Continue with Google"
+    },
+    "login": {
+      "title": "Login",
+      "description": "Enter your email and password below to login",
+      "form": {
+        "email": {
+          "label": "Email"
+        },
+        "password": {
+          "label": "Password"
+        },
+        "forgot_password": {
+          "label": "Forgot Password?"
+        }
+      },
+      "dont_have_account": "Don't have an account?"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "description": "Enter your information to create an account",
+      "form": {
+        "name": {
+          "label": "Name"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "password": {
+          "label": "Password"
+        },
+        "password_again": {
+          "label": "Password Again"
+        }
+      },
+      "already_have_account": "Already have an account?"
+    },
+    "forgot_password": {
+      "title": "Forgot Password",
+      "description": "Enter your email below to send a password reset link",
+      "form": {
+        "email": {
+          "label": "Email"
+        },
+        "link_sent": "Link sent",
+        "send_reset_link": "Send Reset Link",
+        "check_inbox": "Please check your inbox (and also your spam box) for the link."
+      }
+    },
+    "reset_password": {
+      "title": "Reset Password",
+      "description": "Enter your email below to send a password reset link",
+      "form": {
+        "password": {
+          "label": "Password"
+        },
+        "password_again": {
+          "label": "Password Again"
+        },
+        "save": "Save"
+      }
+    }
+  }
+}

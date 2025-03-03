@@ -1,3 +1,48 @@
 {
-  "eslint.workingDirectories": [{ "pattern": "apps/*/" }, { "pattern": "packages/*/" }]
+  "code-runner.ignoreSelection": true,
+  "workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#2ed294",
+		"activityBar.background": "#2ed294",
+		"activityBar.foreground": "#15202b",
+		"activityBar.inactiveForeground": "#15202b99",
+		"activityBarBadge.background": "#a147d7",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"commandCenter.border": "#e7e7e799",
+		"sash.hoverBorder": "#2ed294",
+		"statusBar.background": "#24a977",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#2ed294",
+		"statusBarItem.remoteBackground": "#24a977",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"titleBar.activeBackground": "#24a977",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#24a97799",
+		"titleBar.inactiveForeground": "#e7e7e799"
+	},
+	"peacock.color": "#24a977",
+	"editor.defaultFormatter": "biomejs.biome",
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"files.associations": {
+		"*.scss": "scss",
+		"*.css": "css",
+		".env.*": "properties"
+	},
+	"editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+		"source.removeUnusedImports": "explicit"
+  },
+	"tailwindCSS.experimental.classRegex": [
+    "\\/\\*\\s?tw:\\s?\\*\\/\\s?\"(.*)\"",
+    "\\/\\*\\s?tw:\\s?\\*\\/\\s?`(.*)`"
+	],
+	"[postcss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"i18n-ally.localesPaths": [
+		"../apps/web/src/dict",
+		"apps/web/src/i18n"
+	],
+	"i18n-ally.keystyle": "nested"
 }

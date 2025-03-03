@@ -1,16 +1,14 @@
-import { z } from 'zod';
-import { type UserRole } from '../users';
+import { z } from "zod";
+import type { UserRole } from "../users";
 
-export const SIGN_UP_METHODS = ['password', 'google', 'facebook'] as const;
+export const SIGN_UP_METHODS = ["password", "google", "facebook"] as const;
 export type SignUpMethod = (typeof SIGN_UP_METHODS)[number];
 
 // Declarations
 export interface AuthUser {
   id: string;
-  first_name: string;
-  last_name: string;
+  name: string;
   email_address: string;
-  username: string;
   role: UserRole;
   is_email_address_verified: boolean;
 }
@@ -19,9 +17,7 @@ type SignUpResponse = AuthUser;
 type LoginResponse = AuthUser;
 
 export const SignUpWithPasswordSchema = z.object({
-  first_name: z.string(),
-  last_name: z.string(),
-  username: z.string().toLowerCase(),
+  name: z.string(),
   email: z.string().email(),
   password: z.string().min(8).max(255),
 });

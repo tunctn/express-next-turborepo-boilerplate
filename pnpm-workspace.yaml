@@ -1,3 +1,9 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - bun
+  - core-js
+  - esbuild
+  - sharp

@@ -1,7 +1,7 @@
 export type LocalStorageKey = "user-id";
 
 export class LocalStorage {
-  public set(key: LocalStorageKey, value: string | null | undefined): void {
+  public set(key: LocalStorageKey, value: string | null | undefined) {
     if (value === null) return this.delete(key);
     if (value === undefined) return this.delete(key);
     if (value === "") return this.delete(key);

@@ -1,0 +1,12 @@
+{
+  "extends": "@packages/tsconfig/node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "jsx": "preserve",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true
+  }
+}

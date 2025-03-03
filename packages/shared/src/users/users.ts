@@ -1,13 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-export const USER_ROLES = ['user', 'admin'] as const;
+export const USER_ROLES = ["user", "admin"] as const;
 export type UserRole = (typeof USER_ROLES)[number];
 export interface User {
   id: string;
-  first_name: string;
-  last_name: string;
+  name: string;
   email_address: string;
-  username: string;
   role: UserRole;
 }
 

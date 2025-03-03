@@ -1,0 +1,45 @@
+.expression-decorator {
+  @apply border-b border-t font-mono text-[13px] tracking-tighter;
+}
+
+.expression-brackets {
+  @apply border-purple-300/50 bg-purple-100/50 text-purple-900/40;
+}
+.expression-start-bracket {
+  @apply rounded-l-lg border-l !pl-1 !pr-0;
+}
+.expression-end-bracket {
+  @apply rounded-r-lg border-r !pl-0 !pr-1;
+}
+
+/* .expression-first {
+} 
+.expression-last {
+} */
+
+.expression-separator {
+  @apply border-gray-400/40 bg-gray-100/50 text-gray-900 dark:border-gray-400/20 dark:bg-gray-100/10 dark:text-gray-100;
+}
+
+.expression-identifier_key {
+  @apply border-purple-300/50 bg-purple-100/50 text-purple-900 dark:border-purple-300/20 dark:bg-purple-200/10 dark:text-purple-300;
+}
+.expression-input {
+  @apply border-green-300/50 bg-green-100/50 text-green-900 dark:border-green-300/20 dark:bg-green-100/10 dark:text-green-300;
+}
+.expression-output {
+  @apply border-blue-300/50 bg-blue-100/50 text-blue-900 dark:border-blue-300/20 dark:bg-blue-100/10 dark:text-blue-300;
+}
+.expression-global {
+  @apply border-yellow-300/50 bg-yellow-100/50 text-yellow-900 dark:border-yellow-300/20 dark:bg-yellow-100/10 dark:text-yellow-300;
+}
+.expression-function {
+  @apply border-orange-300/50 bg-orange-100/50 text-orange-900 dark:border-orange-300/20 dark:bg-orange-100/10 dark:text-orange-300;
+}
+
+.expression-invalid {
+  @apply border-b border-t border-red-300 bg-red-200 font-semibold text-red-900;
+}
+.expression-incomplete {
+  @apply border-b border-t !border-red-500/50 !bg-red-100/50 font-semibold text-red-900;
+}

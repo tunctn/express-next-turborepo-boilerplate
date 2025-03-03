@@ -1,7 +1,8 @@
 {
-  "name": "repo",
+  "name": "monorepoapp",
   "private": true,
   "scripts": {
+    "type-check": "npx biome check --diagnostic-level=warn",
     "purge:nm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + ",
     "purge:turbo": "find . -name '.turbo' -type d -prune -exec rm -rf '{}' + ",
     "purge:next": "find . -name '.next' -type d -prune -exec rm -rf '{}' + ",
@@ -15,26 +16,28 @@
     "start": "dotenv -- turbo run start'",
     "start:web": "dotenv -- turbo run start --filter='./apps/web'",
     "start:server": "dotenv -e .env -- turbo run start --filter='./apps/server'",
-    "db:up": "dotenv -- pnpm run --filter=server db:up",
-    "db:push": "dotenv -- pnpm run --filter=server db:push",
-    "db:pull": "dotenv -- pnpm run --filter=server db:pull",
-    "db:generate": "dotenv -- pnpm run --filter=server db:generate",
-    "dev": "dotenv -- turbo run dev --concurrency 20",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:up": "dotenv -- pnpm run --filter=@packages/database db:up",
+    "db:push": "dotenv -- pnpm run --filter=@packages/database db:push",
+    "db:pull": "dotenv -- pnpm run --filter=@packages/database db:pull",
+    "db:generate": "dotenv -- pnpm run --filter=@packages/database db:generate",
+    "db:migrate": "dotenv -- pnpm run --filter=@packages/database db:migrate",
+    "dev": "dotenv -e .env -e .env.local -- turbo dev --no-daemon --parallel",
+    "format": "npx @biomejs/biome format --write .",
     "generate": "turbo run generate",
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "dotenv-cli": "^7.4.2",
-    "prettier": "^3.2.5",
-    "turbo": "^2.0.4",
-    "typescript": "^5.4.5"
+    "biome": "^0.3.3",
+    "dotenv-cli": "^8.0.0",
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@10.5.2",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.11.0"
   },
   "dependencies": {
-    "@total-typescript/ts-reset": "^0.5.1"
+    "@total-typescript/ts-reset": "^0.6.1",
+    "bun": "^1.2.4"
   }
 }

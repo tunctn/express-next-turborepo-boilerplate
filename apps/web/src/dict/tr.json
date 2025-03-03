@@ -1,0 +1,72 @@
+{
+  "home_page": {
+    "title": "Merhaba dünya!"
+  },
+  "auth": {
+    "login_button": "Giriş Yap",
+    "signup_button": "Kayıt Ol",
+    "social_login": {
+      "google": "Google ile Devam Et"
+    },
+    "login": {
+      "title": "Giriş Yap",
+      "description": "Lütfen e-posta adresinizi ve şifrenizi girin",
+      "form": {
+        "email": {
+          "label": "E-posta"
+        },
+        "password": {
+          "label": "Şifre"
+        },
+        "forgot_password": {
+          "label": "Şifremi Unuttum?"
+        }
+      },
+      "dont_have_account": "Hesabınız yok mu?"
+    },
+    "signup": {
+      "title": "Kayıt Ol",
+      "description": "Hesap oluşturmak için bilgilerinizi girin",
+      "form": {
+        "name": {
+          "label": "İsim"
+        },
+        "email": {
+          "label": "E-posta"
+        },
+        "password": {
+          "label": "Şifre"
+        },
+        "password_again": {
+          "label": "Şifre Tekrar"
+        }
+      },
+      "already_have_account": "Zaten hesabınız var mı?"
+    },
+    "forgot_password": {
+      "title": "Şifremi Unuttum",
+      "description": "Lütfen e-posta adresinizi buraya girin",
+      "form": {
+        "email": {
+          "label": "E-posta"
+        },
+        "link_sent": "Bağlantı gönderildi",
+        "send_reset_link": "Şifre Sıfırlama Bağlantısı Gönder",
+        "check_inbox": "Lütfen bağlantı için gelen kutunuzu (ve spam alanınızı) kontrol edin."
+      }
+    },
+    "reset_password": {
+      "title": "Şifre Sıfırlama",
+      "description": "Şifre sıfırlama bağlantısı göndermek için e-posta adresinizi girin",
+      "form": {
+        "password": {
+          "label": "Şifre"
+        },
+        "password_again": {
+          "label": "Şifre Tekrar"
+        },
+        "save": "Kaydet"
+      }
+    }
+  }
+}

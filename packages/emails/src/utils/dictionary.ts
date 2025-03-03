@@ -1,5 +1,5 @@
-import { zodT, type Locale } from '@packages/shared';
-import type { ReactNode } from 'react';
+import { zodT, type Locale } from "@packages/shared";
+import type { ReactNode } from "react";
 
 export const translateTo = (locale: Locale) => {
   zodT(locale);

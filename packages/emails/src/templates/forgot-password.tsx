@@ -1,6 +1,6 @@
-import { APP, FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, type Locale } from '@packages/shared';
-import * as React from 'react';
-import { translateToNode } from '../utils/dictionary';
+import { APP, FORGOT_PASSWORD_VALIDITY_DURATION_IN_MINUTES, type Locale } from "@packages/shared";
+import * as React from "react";
+import { translateToNode } from "../utils/dictionary";
 
 interface ForgotPasswordEmailTemplateProps {
   firstName: string;
@@ -48,8 +48,8 @@ export const ForgotPasswordEmailTemplate: React.FC<Readonly<ForgotPasswordEmailT
 
       <p>
         {t({
-          en: 'Thanks,',
-          tr: 'Teşekkürler,',
+          en: "Thanks,",
+          tr: "Teşekkürler,",
         })}
         <br />
         {APP.TITLE}

@@ -1,6 +1,6 @@
-import { APP, type Locale } from '@packages/shared';
-import * as React from 'react';
-import { translateToNode } from '../utils/dictionary';
+import { APP, type Locale } from "@packages/shared";
+import * as React from "react";
+import { translateToNode } from "../utils/dictionary";
 
 interface VerifyEmailEmailTemplateProps {
   firstName: string;
@@ -38,8 +38,8 @@ export const VerifyEmailEmailTemplate: React.FC<Readonly<VerifyEmailEmailTemplat
 
       <p>
         {t({
-          en: 'Thanks,',
-          tr: 'Teşekkürler,',
+          en: "Thanks,",
+          tr: "Teşekkürler,",
         })}
         <br />
         {APP.TITLE}
